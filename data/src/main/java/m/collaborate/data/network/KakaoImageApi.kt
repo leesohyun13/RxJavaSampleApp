@@ -5,9 +5,9 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
 
-interface KakaoImageService {
+interface KakaoImageApi {
     @GET(SUB_PATH_BOOK)
-    fun searchDocuments(
+    fun searchImages(
         @Header(SCHEMA_REQUEST_HEADER_AUTHORIZATION) restApiKey: String = REST_API_KEY,
         @Query(SCHEMA_QUERY) query: String,
         @Query(SCHEMA_QUERY_SORT) sort: KakaoSearchSortType = KakaoSearchSortType.ACCURACY,
