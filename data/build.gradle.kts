@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 
 plugins {
     id("com.android.application")
@@ -7,6 +7,8 @@ plugins {
     id("kotlin-android")
     id("dagger.hilt.android.plugin")
 }
+
+val key: String = gradleLocalProperties(rootDir).getProperty("KAKAO_IMAGE_REST_API_KEY")
 
 android {
     compileSdkVersion(30)
@@ -19,6 +21,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        buildConfigField("String", "KAKAO_IMAGE_REST_API_KEY", key)
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
