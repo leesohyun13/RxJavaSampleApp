@@ -66,6 +66,9 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.29.1-alpha")
     implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
     kapt("androidx.hilt:hilt-compiler:1.0.0-alpha03")
+
+    // Paging
+    implementation("androidx.paging:paging-runtime:2.1.2")
 }
 
 kapt {
