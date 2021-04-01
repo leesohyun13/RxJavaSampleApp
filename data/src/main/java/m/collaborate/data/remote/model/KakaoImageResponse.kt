@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class KakaoImageResponse(
     @SerializedName("documents")
-    val documents: List<Image>,
+    val documents: List<Document>,
     @SerializedName("meta")
     val meta: Meta
 ) {
@@ -16,7 +16,7 @@ data class KakaoImageResponse(
         @SerializedName("is_end")
         val isEnd: Boolean
     )
-    data class Image(
+    data class Document(
         @SerializedName("collection")
         val collection: String,
         @SerializedName("thumbnail_url")
