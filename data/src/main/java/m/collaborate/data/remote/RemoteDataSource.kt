@@ -5,5 +5,5 @@ import m.collaborate.data.remote.model.KakaoImageResponse
 
 interface RemoteDataSource {
 
-    suspend fun searchImages(query: String, page: Int, target: KakaoSearchSortType?): KakaoImageResponse
+    suspend fun searchImages(query: String, page: Int?, sort: KakaoSearchSortType?): KakaoImageResponse
 }
