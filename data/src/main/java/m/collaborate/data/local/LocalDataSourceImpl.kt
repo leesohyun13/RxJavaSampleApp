@@ -2,14 +2,14 @@ package m.collaborate.data.local
 
 import androidx.paging.PagingSource
 import m.collaborate.data.local.Dao.ImageDao
-import m.collaborate.data.local.Dao.RemoteKeysDao
+import m.collaborate.data.local.Dao.RemoteKeyDao
 import m.collaborate.data.local.entity.Image
 import m.collaborate.data.local.entity.RemoteKey
 import javax.inject.Inject
 
 class LocalDataSourceImpl @Inject constructor(
     private val imageDao: ImageDao,
-    private val remoteKeysDao: RemoteKeysDao
+    private val remoteKeyDao: RemoteKeyDao
 ) : LocalDataSource {
 
     override fun getPagedImages(): PagingSource<Int, Image> {
@@ -37,14 +37,14 @@ class LocalDataSourceImpl @Inject constructor(
     }
 
     override suspend fun insertOrReplace(remoteKeys: List<RemoteKey>): List<Long> {
-        return remoteKeysDao.insertOrReplace(remoteKeys)
+        return remoteKeyDao.insertOrReplace(remoteKeys)
     }
 
     override suspend fun remoteKeyById(url: String): RemoteKey? {
-        return remoteKeysDao.remoteKeyById(url)
+        return remoteKeyDao.remoteKeyById(url)
     }
 
     override suspend fun clearRemoteKeys() {
-        remoteKeysDao.clearRemoteKeys()
+        remoteKeyDao.clearRemoteKeys()
     }
 }
