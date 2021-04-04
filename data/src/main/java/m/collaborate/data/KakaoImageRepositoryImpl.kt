@@ -12,14 +12,14 @@ import m.collaborate.data.network.KakaoImageApi
 import m.collaborate.data.paging.ImageSearchRemoteMediator
 import m.collaborate.data.remote.RemoteDataSource
 import m.collaborate.data.remote.enums.KakaoSearchSortType
-import m.collaborate.data.remote.network.NetworkExt
+import m.collaborate.data.remote.network.safeAPi
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
 class KakaoImageRepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource
-) : KakaoImageRepository, NetworkExt() {
+) : KakaoImageRepository {
     override suspend fun searchImage(query: String, page: Int, sort: KakaoSearchSortType?) = safeAPi {
         remoteDataSource.searchImages(query, page, sort)
     }

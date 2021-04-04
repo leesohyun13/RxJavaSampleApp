@@ -8,7 +8,7 @@ import androidx.room.Query
 import m.collaborate.data.local.entity.RemoteKey
 
 @Dao
-interface RemoteKeysDao {
+interface RemoteKeyDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrReplace(remoteKey: List<RemoteKey>): List<Long>
 
