@@ -1,29 +1,50 @@
 package m.collaborate.data.local
 
+import androidx.paging.PagingSource
+import m.collaborate.data.local.Dao.ImageDao
+import m.collaborate.data.local.Dao.RemoteKeysDao
 import m.collaborate.data.local.entity.Image
+import m.collaborate.data.local.entity.RemoteKey
+import javax.inject.Inject
 
-class LocalDataSourceImpl : LocalDataSource {
-    override suspend fun getImages(): List<Image> {
-        TODO("Not yet implemented")
+class LocalDataSourceImpl @Inject constructor(
+    private val imageDao: ImageDao,
+    private val remoteKeysDao: RemoteKeysDao
+) : LocalDataSource {
+
+    override fun getPagedImages(): PagingSource<Int, Image> {
+        return imageDao.selectPagedImages()
     }
 
     override suspend fun searchImageById(url: String): Image {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun insertImage(task: Image) {
-        TODO("Not yet implemented")
+        return imageDao.selectItemById(url)
     }
 
     override suspend fun insertImages(image: List<Image>) {
-        TODO("Not yet implemented")
+        imageDao.insertAllImages(image)
+    }
+
+    override fun isLikeImageById(isLike: Boolean, url: String) {
+        imageDao.isLikeImageById(isLike, url)
     }
 
     override suspend fun deleteImageById(url: String) {
-        TODO("Not yet implemented")
+        imageDao.deleteItemById(url)
     }
 
     override suspend fun deleteImages() {
-        TODO("Not yet implemented")
+        imageDao.deleteImages()
+    }
+
+    override suspend fun insertOrReplace(remoteKeys: List<RemoteKey>): List<Long> {
+        return remoteKeysDao.insertOrReplace(remoteKeys)
+    }
+
+    override suspend fun remoteKeyById(url: String): RemoteKey? {
+        return remoteKeysDao.remoteKeyById(url)
+    }
+
+    override suspend fun clearRemoteKeys() {
+        remoteKeysDao.clearRemoteKeys()
     }
 }
