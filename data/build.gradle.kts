@@ -53,6 +53,10 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
     implementation("com.google.code.gson:gson:2.8.6")
 
+    // Room
+    implementation("androidx.room:room-runtime:2.2.5")
+    annotationProcessor("androidx.room:room-compiler:2.2.5")
+
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -62,6 +66,9 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.29.1-alpha")
     implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
     kapt("androidx.hilt:hilt-compiler:1.0.0-alpha03")
+
+    // Paging
+    implementation("androidx.paging:paging-runtime-ktx:3.0.0-beta02")
 }
 
 kapt {

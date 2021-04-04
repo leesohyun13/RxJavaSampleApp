@@ -6,6 +6,7 @@ plugins {
     kotlin("kapt")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    id("kotlin-android")
 }
 
 android {
@@ -45,12 +46,14 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0")
+    implementation("androidx.wear:wear:1.0.0")
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.31.2-alpha")
+    compileOnly("com.google.android.wearable:wearable:2.6.0")
     kapt("com.google.dagger:hilt-android-compiler:2.29.1-alpha")
     implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
     kapt("androidx.hilt:hilt-compiler:1.0.0-alpha03")

@@ -2,6 +2,7 @@ package m.collaborate.data.network
 
 import m.collaborate.data.BuildConfig
 import m.collaborate.data.remote.enums.KakaoSearchSortType
+import m.collaborate.data.remote.model.KakaoImageResponse
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
@@ -11,10 +12,10 @@ interface KakaoImageApi {
     fun searchImages(
         @Header(SCHEMA_REQUEST_HEADER_AUTHORIZATION) restApiKey: String = BuildConfig.KAKAO_IMAGE_REST_API_KEY,
         @Query(SCHEMA_QUERY) query: String,
-        @Query(SCHEMA_QUERY_SORT) sort: KakaoSearchSortType = KakaoSearchSortType.ACCURACY,
-        @Query(SCHEMA_QUERY_PAGE) page: Int = BOOK_STARTING_PAGE_INDEX,
+        @Query(SCHEMA_QUERY_SORT) sort: KakaoSearchSortType?,
+        @Query(SCHEMA_QUERY_PAGE) page: Int? = BOOK_STARTING_PAGE_INDEX,
         @Query(SCHEMA_QUERY_SIZE) size: Int = BOOK_PAGING_SIZE,
-    )
+    ): KakaoImageResponse
 
     companion object {
         const val SUB_PATH_BOOK = "v3/search/image"
