@@ -1,4 +1,4 @@
-package m.collaborate.rxjavasampleapp.ui.main
+package m.collaborate.rxjavasampleapp
 
 import androidx.lifecycle.ViewModel
 
